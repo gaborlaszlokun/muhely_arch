@@ -15,17 +15,40 @@
 		<div id="fields">
 			 <form method="post" action="search.php" class="input-list style-2">
 			<br/><br/>
-			<input id="query" type="text" name="lapszam">
+			<input id="query" type="text" name="query">
+			<select name="where">
+				<option value="mindenben">Mindenben</option>
+				<option value="cim">Csak címben</option>
+				<option value="szerzo">Csak szerző</option>
+			</select>
+			<select name="column">
+				<option value="minden">Minden rovat</option>
+				<option value="korkep">BME Körkép</option>
+				<option value="megkerdeztuk">Megkérdeztük</option>
+				<option value="kapun">Kapun kívül</option>
+				<option value="kozelet">Közélet</option>
+				<option value="sport">Sport</option>
+				<option value="tudtech">Tudomány és Technika</option>
+				<option value="magazin">Magazin</option>
+				<option value="nezopont">Nézőpont</option>
+				<option value="vita">Vitafórum</option>
+				<option value="gondolatok">Gondolatok</option>
+				<option value="uzleti">Üzleti Negyed</option>
+				<!-- És így tovább igény szerint ( főképp, ha korábban más rovatok is voltak! ) -->
+			</select>
 			<input type="submit" value="Mehet!" class="input-list style-2">
 			</form>
 		</div>
 		<?php
-			if( isset($_POST['lapszam']) ){
-				$statement=$_POST['lapszam'];
+			if( isset($_POST['query']) ){
+				$statement=$_POST['query'];
+				$where = $_POST['where'];
+				$column = $_POST['column'];
 				if (strlen($statement) < 3){
 					print "Hiba! Túl rövid kifejezést adtál meg!";
 				}
 				else{
+					//print $where.", ".$column."<br>";
 					print "Találatok a(z) <strong>".$statement."</strong> kifejezésre (";
 					try{
 						$statement = strtolower("%".$statement."%");

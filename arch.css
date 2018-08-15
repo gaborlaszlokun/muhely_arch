@@ -8,7 +8,13 @@
 	opacity: 1.0;
 }
 #search{
-	width: 33%;
+	width: 75%;
+	border: solid;
+	border-color: black;
+	background-color: #931328;
+}
+#faq{
+	width: 25%;
 	border: solid;
 	border-color: black;
 	background-color: #931328;
@@ -50,7 +56,7 @@ td{
 	border: solid;
 	border-color: white;
 	border-radius: 12px;
-	width: 80%;
+	width: 40%;
 }
 
 select{

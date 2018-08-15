@@ -7,10 +7,11 @@
 	</head>
 	<body>
 	<table id="menu">
-	<tr id="menu">
-	 <td id="search" onclick="window.location.href = 'search.php'"><strong>Keresés</strong></td>
-	 </tr>
-	 </table>
+		<tr id="menu">
+			<td id="search" onclick="window.location.href = 'search.php'"><strong>Keresés</strong></td>
+			<td id="faq" onclick="window.location.href = 'faq.php'"><strong>Leírás</strong></td>
+		</tr>
+	</table>
 	<div id="browse" <?php if( isset($_GET['lapszam']) || isset($_POST['lapszam']) || isset($_GET['artid']))echo 'style="display:none;"' ?>>	
 	<table id="browse_table">
 	<?php
