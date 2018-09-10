@@ -42,6 +42,9 @@ td{
 	background-color: #931328;
 	opacity: 0.8;
 }
+img{
+	width: 10%;
+}
 #fields{
 	background-color: #931328;
 	border: solid;

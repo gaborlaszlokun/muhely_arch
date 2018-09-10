@@ -47,14 +47,17 @@
 				for($k = 0; $k < 3; $k++){	
 					$lapend = sprintf("%02d", $lap);
 					$lapid = $np.$lapend;
-					$file = "http://localhost/muhely/".$year."/".$lapid."/index.html<br>";
+					$file = "muhely/".$year."/".$lapid.".pdf";
+					$file_json = "muhely/".$year."/".$lapid.".json";
 					$file_headers = @get_headers($file);
-					
-					if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+					if (!file_exists($file)) {
 						print "<td style='color: #931328;background-color: white;'><strong>".$year. " / ".$lap."</strong></td>";
-}
+					}
+					else if (!file_exists($file_json)) {
+						print "<td style='color: white;background-color: #131328;' onclick=\"window.location.href = 'muhely/".$year."/".$lapid.".pdf'\"><strong>".$year. " / ".$lap."</strong></td>";
+					}
 					else {
-						print "<td onclick=\"window.location.href = 'muhely/".$year."/".$lapid."/index.html'\"><strong>".$year. " / ".$lap."</strong></td>";
+						print "<td onclick=\"window.location.href = 'muhely/".$year."/".$lapid.".pdf'\"><strong>".$year. " / ".$lap."</strong></td>";
 					}
 					$lap++;
 				}		

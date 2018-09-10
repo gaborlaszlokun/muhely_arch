@@ -40,6 +40,19 @@
 			</form>
 		</div>
 		<?php
+		
+			// megjelenítő függvényt
+			function show_res($row){
+				print $row['id'] ." ". $row['ev']."<br>";
+				//print "<img src='muhely/".$row['ev']."/".$row['id']."/thumbnails/1.jpg'><br>";
+				/*print '<table id="menu">
+				<tr id="menu">';
+				print "<td onclick='window.location.href = \"muhely/".$row['ev']."/".$row['id'].".pdf\"'><strong>Kattints!</strong></td>";
+				print '</tr>
+				</table>';*/
+				
+			}
+		
 			if( isset($_POST['query']) ){
 				$statement=$_POST['query'];
 				$where = $_POST['where'];
@@ -53,17 +66,16 @@
 					try{
 						$statement = strtolower("%".$statement."%");
 						$myPDO = new PDO('sqlite:muhely.db');
-						$stmt = $myPDO->prepare("SELECT * FROM muhely WHERE LOWER(szoveg) LIKE :id;");
+						$stmt = $myPDO->prepare("SELECT * FROM muhely WHERE LOWER(szoveg) LIKE :id ORDER BY id;");
 						$stmt->execute(['id' => $statement]); 
 						$user = $stmt->fetchAll();
 						print sizeof($user)." db találat) :<br>";
 						foreach($user as $row)
 							{
-								print $row['id'] ." ". $row['ev']."<br>";
-								print "<img src='muhely/".$row['ev']."/".$row['id']."/thumbnails/1.jpg'><br>";
+								show_res($row);
 							}
 					}
-					 catch (Exception $e) {
+					catch (Exception $e) {
 						echo 'Caught exception: ',  $e->getMessage(), "\n";
 					}
 				}
